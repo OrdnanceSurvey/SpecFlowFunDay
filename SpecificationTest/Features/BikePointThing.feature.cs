@@ -18,20 +18,20 @@ namespace SpecificationTest.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("CanConnectToApi")]
-    public partial class CanConnectToApiFeature
+    [NUnit.Framework.DescriptionAttribute("BikePointThing")]
+    public partial class BikePointThingFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "CanConnectToApi.feature"
+#line 1 "BikePointThing.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CanConnectToApi", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "BikePointThing", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -70,10 +70,10 @@ namespace SpecificationTest.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Can Connect To Api")]
-        public virtual void CanConnectToApi()
+        [NUnit.Framework.DescriptionAttribute("Returns a list of bike points")]
+        public virtual void ReturnsAListOfBikePoints()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Can Connect To Api", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Returns a list of bike points", null, ((string[])(null)));
 #line 3
  this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -81,26 +81,6 @@ namespace SpecificationTest.Features
   testRunner.Given("the TFL API at https://api.tfl.gov.uk/BikePoint/", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
   testRunner.When("the API is queried", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 6
-  testRunner.Then("the API returns a successful response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Incorrect Url To Connect To Api")]
-        public virtual void IncorrectUrlToConnectToApi()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Incorrect Url To Connect To Api", null, ((string[])(null)));
-#line 8
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 9
-  testRunner.Given("the TFL API at https://api.tfl.gov.uk/BikePointt/", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 10
-  testRunner.When("the API is queried", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
-  testRunner.Then("I am redirected to the 401 Technical Error page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
