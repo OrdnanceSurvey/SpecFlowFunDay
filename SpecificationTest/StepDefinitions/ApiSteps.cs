@@ -19,7 +19,7 @@ namespace SpecificationTest.StepDefinitions
         [Given(@"^the TFL API at (.*)$")]
         public void GivenTheTFLAPIAt(string apiUrl)
         {
-            //communicator = new ApiCommunicator(apiUrl);
+            communicator = new ApiCommunicator(apiUrl);
             this.apiUrl = apiUrl;
         }
 
@@ -28,12 +28,13 @@ namespace SpecificationTest.StepDefinitions
         {
             HttpClient client = new HttpClient();
             response = await client.GetAsync(apiUrl);
+            await communicator.GetAsync();
         }
 
         [Then(@"the API returns a successful response")]
         public void ThenTheApiReturnsASuccessfulResponse()
         {
-            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            Assert.IsTrue(communicator.WasSuccessful());
         }
 
         [Then(@"I am redirected to the 401 Technical Error page")]
@@ -44,8 +45,8 @@ namespace SpecificationTest.StepDefinitions
         [Then(@"the API returns (.*) records")]
         public async System.Threading.Tasks.Task ThenTheAPIReturnsRecordsAsync(int expectedCount)
         {
-            string content = await response.Content.ReadAsStringAsync();
-            List<object> BikePoints = JsonConvert.DeserializeObject<List<object>>(content);
+          
+            List<object> BikePoints = await communicator.GetListOfItemsAsync();
             int actualCount = BikePoints.Count;
             Assert.AreEqual(expectedCount, actualCount);
         }
