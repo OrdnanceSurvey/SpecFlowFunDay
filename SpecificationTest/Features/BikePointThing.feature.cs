@@ -81,6 +81,8 @@ namespace SpecificationTest.Features
   testRunner.Given("the TFL API at https://api.tfl.gov.uk/BikePoint/", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
   testRunner.When("the API is queried", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 6
+  testRunner.Then("the API returns 784 records", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

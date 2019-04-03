@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using Newtonsoft.Json;
+using NUnit.Framework;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using TechTalk.SpecFlow;
@@ -20,14 +22,14 @@ namespace SpecificationTest.StepDefinitions
             //communicator = new ApiCommunicator(apiUrl);
             this.apiUrl = apiUrl;
         }
-        
+
         [When(@"the API is queried")]
         public async System.Threading.Tasks.Task WhenTheAPIIsQueriedAsync()
         {
             HttpClient client = new HttpClient();
             response = await client.GetAsync(apiUrl);
         }
-        
+
         [Then(@"the API returns a successful response")]
         public void ThenTheApiReturnsASuccessfulResponse()
         {
@@ -37,7 +39,19 @@ namespace SpecificationTest.StepDefinitions
         [Then(@"I am redirected to the 401 Technical Error page")]
         public void ThenIAmRedirectedToThe401TechnicalErrorPage()
         {
-            Assert.AreEqual("https://api.tfl.gov.uk/static-messages/401.html",response.RequestMessage.RequestUri.ToString());
+            Assert.AreEqual("https://api.tfl.gov.uk/static-messages/401.html", response.RequestMessage.RequestUri.ToString());
         }
+        [Then(@"the API returns (.*) records")]
+        public async System.Threading.Tasks.Task ThenTheAPIReturnsRecordsAsync(int expectedCount)
+        {
+            string content = await response.Content.ReadAsStringAsync();
+            List<object> BikePoints = JsonConvert.DeserializeObject<List<object>>(content);
+            int actualCount = BikePoints.Count;
+            Assert.AreEqual(expectedCount, actualCount);
+        }
+
+
+
+
     }
 }
